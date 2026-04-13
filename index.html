@@ -11,6 +11,9 @@
     .gift-title { color: #333; font-size: 24px; margin-bottom: 10px; }
     .gift-code-box { background-color: #e2e8f0; padding: 15px; border-radius: 8px; margin-top: 20px; }
     .gift-code { font-size: 20px; font-weight: bold; color: #e53e3e; letter-spacing: 2px; }
+    /* 링크가 걸린 코드의 디자인을 유지하기 위한 CSS 추가 */
+    .gift-code a { color: #e53e3e; text-decoration: none; }
+    .gift-code a:hover { text-decoration: underline; }
     .error { color: #e53e3e; font-weight: bold; }
   </style>
 </head>
@@ -21,15 +24,15 @@
   </div>
 
   <script>
-    // 1. 9개의 선물 데이터 베이스 (원하는 대로 수정하세요)
+    // 1. 9개의 선물 데이터 베이스
     const giftData = {
-      "1": { icon: "☕", title: "신세계 상품권 교환권 50,000원(이마트 전용)", code: <a href="https://kko.to/ttY7Wq8e-u">"코드: 3DQ9RWEZ7C" },
-      "2": { icon: "🥤", title: "메가박스 2인 관람권", code: "BANA-0002" },
-      "3": { icon: "🍔", title: "교촌치킨 허니콤보웨지감자세트", code: "MACD-0003" },
-      "4": { icon: "🍰", title: "스타벅스 아이스 카페 아메리카 T 2잔 + 부드러운 생크림 카스텔라", code: "TWOS-0004" },
-      "5": { icon: "🍦", title: "올리브영 기프트카드 1만원권", code: "BASK-0005" },
-      "6": { icon: "🍗", title: "베스킨라빈스 파인트 아이스크림", code: "CHIC-0006" },
-      "7": { icon: "🍩", title: "CU 모바일 상품권 5,000원", code: "DONU-0007" }
+      "1": { icon: "🛍️", title: "신세계 상품권 교환권 50,000원(이마트 전용)", code: "<a href='https://kko.to/ttY7Wq8e-u' target='_blank'>코드: 3DQ9RWEZ7C</a>" },
+      "2": { icon: "🍿", title: "메가박스 2인 관람권", code: "BANA-0002" },
+      "3": { icon: "🍗", title: "교촌치킨 허니콤보웨지감자세트", code: "MACD-0003" },
+      "4": { icon: "☕", title: "스타벅스 아이스 카페 아메리카 T 2잔 + 부드러운 생크림 카스텔라", code: "TWOS-0004" },
+      "5": { icon: "💄", title: "올리브영 기프트카드 1만원권", code: "BASK-0005" },
+      "6": { icon: "🍨", title: "베스킨라빈스 파인트 아이스크림", code: "CHIC-0006" },
+      "7": { icon: "🏪", title: "CU 모바일 상품권 5,000원", code: "DONU-0007" }
     };
 
     // 2. 접속한 주소(URL)에서 '?id=' 뒤의 숫자를 읽어오기
