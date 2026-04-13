@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎁 특별한 선물 확인</title>
+  <style>
+    body { font-family: 'Arial', sans-serif; text-align: center; padding: 50px; background-color: #f0f4f8; }
+    .container { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); max-width: 400px; margin: 0 auto; }
+    .gift-icon { font-size: 80px; margin-bottom: 20px; }
+    .gift-title { color: #333; font-size: 24px; margin-bottom: 10px; }
+    .gift-code-box { background-color: #e2e8f0; padding: 15px; border-radius: 8px; margin-top: 20px; }
+    .gift-code { font-size: 20px; font-weight: bold; color: #e53e3e; letter-spacing: 2px; }
+    .error { color: #e53e3e; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="content-area">
+    <h2>선물 정보를 불러오는 중...⏳</h2>
+  </div>
+
+  <script>
+    // 1. 9개의 선물 데이터 베이스 (원하는 대로 수정하세요)
+    const giftData = {
+      "1": { icon: "☕", title: "스타벅스 아메리카노", code: "STAR-0001" },
+      "2": { icon: "🥤", title: "바나나맛 우유", code: "BANA-0002" },
+      "3": { icon: "🍔", title: "맥도날드 햄버거 세트", code: "MACD-0003" },
+      "4": { icon: "🍰", title: "투썸플레이스 조각케이크", code: "TWOS-0004" },
+      "5": { icon: "🍦", title: "베스킨라빈스 싱글레귤러", code: "BASK-0005" },
+      "6": { icon: "🍗", title: "BHC 뿌링클 치킨", code: "CHIC-0006" },
+      "7": { icon: "🍩", title: "크리스피크림 도넛", code: "DONU-0007" },
+      "8": { icon: "🍫", title: "페레로로쉐 초콜릿", code: "CHOC-0008" },
+      "9": { icon: "🎁", title: "백화점 상품권 1만원권", code: "GIFT-0009" }
+    };
+
+    // 2. 접속한 주소(URL)에서 '?id=' 뒤의 숫자를 읽어오기
+    const urlParams = new URLSearchParams(window.location.search);
+    const giftId = urlParams.get('id');
+
+    const contentArea = document.getElementById('content-area');
+
+    // 3. 숫자에 맞는 선물 정보를 화면에 표시하기
+    if (giftId && giftData[giftId]) {
+      const gift = giftData[giftId];
+      contentArea.innerHTML = `
+        <div class="gift-icon">${gift.icon}</div>
+        <div class="gift-title">축하합니다!</div>
+        <p><strong>${gift.title}</strong> 당첨입니다.</p>
+        <div class="gift-code-box">
+          <p style="margin: 0 0 10px 0; font-size: 14px; color: #666;">아래 교환 코드를 확인하세요</p>
+          <div class="gift-code">${gift.code}</div>
+        </div>
+      `;
+    } else {
+      // 잘못된 주소로 접속했을 때 (예: id가 없거나 1~9가 아닐 때)
+      contentArea.innerHTML = `
+        <div class="gift-icon">❓</div>
+        <div class="error">유효하지 않은 QR 코드입니다.</div>
+        <p>정상적인 코드를 스캔해주세요.</p>
+      `;
+    }
+  </script>
+
+</body>
+</html>
